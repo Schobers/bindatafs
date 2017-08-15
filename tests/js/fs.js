@@ -1,0 +1,3 @@
+function fs() {
+  return "afero";
+}

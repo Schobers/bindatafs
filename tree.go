@@ -47,6 +47,9 @@ func (t *tree) dir(name string, create bool) *dir {
 			continue
 		}
 		dir = dir.DirByName(d, create)
+		if nil == dir {
+			return nil
+		}
 	}
 	return dir
 }
@@ -63,8 +66,9 @@ func (t *tree) grow(fs *Fs) error {
 		}
 		// Makes assumption that asset can be retrieved as well when the info can be retrieved
 		// Create new info because go-bindata returns full path instead of file name for it's Name() function
+		var nameCapture = name
 		dir.files = append(dir.files, &file{
-			open: func() []byte { return fs.Asset(name) },
+			open: func() []byte { return fs.Asset(nameCapture) },
 			info: &fileInfo{fileName, info.Size(), info.Mode(), info.ModTime(), false},
 		})
 	}

@@ -17,7 +17,7 @@ var fs afero.Fs = bindatafs.NewFs(MustAsset, AssetInfo, AssetNames)
 ```
 or
 ```
-var fs afero.Fs = bindatafs.Fs{Asset: MustAsset, Info: AssetInfo, Names: AssetNames}
+var fs afero.Fs = &bindatafs.Fs{Asset: MustAsset, Info: AssetInfo, Names: AssetNames}
 ```
 
 

@@ -20,6 +20,11 @@ or
 var fs afero.Fs = &bindatafs.Fs{Asset: MustAsset, Info: AssetInfo, Names: AssetNames}
 ```
 
+### Forks of go-bindata
+Bindatafs works with any fork of go-bindata that provides the same API as the [original][1], namely the methods MustAsset, AssetInfo and AssetNames. Tested with:
+- [https://github.com/shuLhan/go-bindata][2]
+
 
 [0]: https://github.com/spf13/afero
 [1]: https://github.com/jteeuwen/go-bindata
+[2]: https://github.com/shuLhan/go-bindata

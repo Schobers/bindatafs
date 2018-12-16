@@ -2,7 +2,9 @@ package bindatafs
 
 import (
 	"fmt"
+	"os"
 	"strings"
+	"time"
 
 	"github.com/spf13/afero"
 )
@@ -55,7 +57,9 @@ func (t *tree) dir(name string, create bool) *dir {
 }
 
 func (t *tree) grow(fs *Fs) error {
-	t.root = &dir{}
+	t.root = &dir{
+		info: &fileInfo{"", 0, os.ModeDir, time.Unix(0, 0), true},
+	}
 	names := fs.Names()
 	for _, name := range names {
 		dirName, fileName := split(name)
